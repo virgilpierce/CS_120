@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 import pandas as pa
@@ -9,13 +9,13 @@ import datetime as dt
 pa.set_option('max_colwidth', 200)
 
 
-# In[2]:
+# In[3]:
 
 
 first_day = dt.date(2021, 8, 23)
 
 
-# In[3]:
+# In[4]:
 
 
 holidays = [dt.date(2021, 9, 6) ]
@@ -25,26 +25,26 @@ turkey_break_delta = turkey_break_end - turkey_break_start
 holidays += [ turkey_break_start + dt.timedelta(i) for i in range(turkey_break_delta.days+1)]
 
 
-# In[4]:
+# In[5]:
 
 
 last_day = dt.date(2021, 12, 3)
 
 
-# In[5]:
+# In[6]:
 
 
 final_exam = dt.date(2021, 12, 6)
 
 
-# In[6]:
+# In[7]:
 
 
 semester_length = last_day - first_day
 semester_length
 
 
-# In[7]:
+# In[8]:
 
 
 class_days = []
@@ -53,7 +53,7 @@ for i in range((semester_length.days //7 + 1)):
 class_days += [final_exam]
 
 
-# In[8]:
+# In[9]:
 
 
 schedule = pa.DataFrame(class_days, columns = ['Day'])
@@ -64,14 +64,14 @@ for i in range(schedule.shape[0]):
 schedule.Week_Day = schedule.Week_Day.map(weekday_dict)
 
 
-# In[9]:
+# In[10]:
 
 
 for holiday in holidays:
     schedule.loc[schedule.Day==holiday, 'Title'] = 'No Class - University Holiday'
 
 
-# In[10]:
+# In[11]:
 
 
 def add_day(title='', description='', notes=''):
@@ -92,7 +92,7 @@ def add_day(title='', description='', notes=''):
     
 
 
-# In[17]:
+# In[14]:
 
 
 day = 0
@@ -100,17 +100,17 @@ day = 0
 # Introduction - our first program
 
 add_day('Introduction to Python / Jupyter', 
-        'Variables', 'Compute N! and (2N-1)!!; and how many primes are there less than N?')
+        'Variables, Numpy', 'Euclidean Algorithm')
 
 add_day('Variables and Functions', 'Types of variables and writing functions')
 
-add_day('Lab Day: Plotting Functions')
+add_day('Lab Day: Plotting Functions', 'Introduction to Matplotlib.pyplot')
 
 ## Week 2
 
 add_day('Variables and Functions')
 
-add_day('Variables and Functions')
+add_day('Recursions')
 
 add_day('Lab Day: Find N! and (2N-1)!!')
 
