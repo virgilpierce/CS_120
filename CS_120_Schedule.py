@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[1]:
 
 
 import pandas as pa
@@ -9,13 +9,13 @@ import datetime as dt
 pa.set_option('max_colwidth', 200)
 
 
-# In[3]:
+# In[2]:
 
 
 first_day = dt.date(2021, 8, 23)
 
 
-# In[4]:
+# In[3]:
 
 
 holidays = [dt.date(2021, 9, 6) ]
@@ -25,26 +25,26 @@ turkey_break_delta = turkey_break_end - turkey_break_start
 holidays += [ turkey_break_start + dt.timedelta(i) for i in range(turkey_break_delta.days+1)]
 
 
-# In[5]:
+# In[4]:
 
 
 last_day = dt.date(2021, 12, 3)
 
 
-# In[6]:
+# In[5]:
 
 
 final_exam = dt.date(2021, 12, 6)
 
 
-# In[7]:
+# In[6]:
 
 
 semester_length = last_day - first_day
 semester_length
 
 
-# In[8]:
+# In[7]:
 
 
 class_days = []
@@ -53,7 +53,7 @@ for i in range((semester_length.days //7 + 1)):
 class_days += [final_exam]
 
 
-# In[9]:
+# In[8]:
 
 
 schedule = pa.DataFrame(class_days, columns = ['Day'])
@@ -64,14 +64,14 @@ for i in range(schedule.shape[0]):
 schedule.Week_Day = schedule.Week_Day.map(weekday_dict)
 
 
-# In[10]:
+# In[9]:
 
 
 for holiday in holidays:
     schedule.loc[schedule.Day==holiday, 'Title'] = 'No Class - University Holiday'
 
 
-# In[11]:
+# In[10]:
 
 
 def add_day(title='', description='', notes=''):
@@ -92,7 +92,7 @@ def add_day(title='', description='', notes=''):
     
 
 
-# In[14]:
+# In[11]:
 
 
 day = 0
@@ -104,13 +104,13 @@ add_day('Introduction to Python / Jupyter',
 
 add_day('Variables and Functions', 'Types of variables and writing functions')
 
-add_day('Lab Day: Plotting Functions', 'Introduction to Matplotlib.pyplot')
+add_day('Lab Day: Euclidean Algorithm', 'Implementing Euclidean Algorithm')
 
 ## Week 2
 
-add_day('Variables and Functions')
+add_day('Conditionals and Recursion', 'Fixing our Euclidean Algorithm')
 
-add_day('Recursions')
+add_day('Conditionals and Recursion')
 
 add_day('Lab Day: Find N! and (2N-1)!!')
 
@@ -123,17 +123,17 @@ add_day('Lab Day: Exploring Local and Global Variables')
 
 ## Week 4
 
-add_day('Conditionals and Recursion')
+add_day('Limitations of Floats and Ints')
 
-add_day('Conditionals and Recursion')
+add_day('Dealing with Errors')
 
 add_day('Lab Day:  Approximate a square root')
 
 ## Week 5
 
-add_day('Introduction to modules', 'Numpy and Matplotlib')
+add_day('More Using Module', 'Numpy and Sympy')
 
-add_day('Introduction to modules')
+add_day('Calculus with Python')
 
 add_day('Lab Day: How fast does factorial grow?')
 
@@ -179,9 +179,9 @@ add_day('Lab Day: Find the derrivative of a polynomial')
 
 ## Week 11
 
-add_day('Dictionaries')
+add_day('Dictionaries and Sets')
 
-add_day('Dictionaries')
+add_day('Dictionaries and Sets')
 
 add_day('Lab Day: Algebra of Permutations')
 
@@ -195,11 +195,11 @@ add_day('Putting it All Together')
 
 ## Week 14
 
-add_day('Data Structure Selection')
+add_day('Data Structure Selection', 'Defining our own types')
 
 add_day('Data Structure Selection')
 
-add_day('Lab Day:  Activity with Data Structures')
+add_day('Lab Day: Complex Numbers, Quaternionic Numbers')
 
 ## Week 15
 
