@@ -104,7 +104,7 @@ add_day('Introduction to Python / Jupyter',
 
 add_day('Variables and Functions', 'Types of variables and writing functions')
 
-add_day('Lab Day: Euclidean Algorithm', 'Implementing Euclidean Algorithm')
+add_day('Lab Day: Find N! and (2N-1)!!')
 
 ## Week 2
 
@@ -112,7 +112,7 @@ add_day('Conditionals and Recursion', 'Fixing our Euclidean Algorithm')
 
 add_day('Conditionals and Recursion')
 
-add_day('Lab Day: Find N! and (2N-1)!!')
+add_day('Lab Day: Euclidean Algorithm', 'Implementing Euclidean Algorithm')
 
 
 ## Week 3 
