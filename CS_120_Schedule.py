@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[12]:
+# In[1]:
 
 
 import pandas as pa
@@ -9,13 +9,13 @@ import datetime as dt
 pa.set_option('max_colwidth', 200)
 
 
-# In[13]:
+# In[2]:
 
 
 first_day = dt.date(2021, 8, 23)
 
 
-# In[14]:
+# In[3]:
 
 
 holidays = [dt.date(2021, 9, 6) ]
@@ -25,26 +25,26 @@ turkey_break_delta = turkey_break_end - turkey_break_start
 holidays += [ turkey_break_start + dt.timedelta(i) for i in range(turkey_break_delta.days+1)]
 
 
-# In[15]:
+# In[4]:
 
 
 last_day = dt.date(2021, 12, 3)
 
 
-# In[16]:
+# In[5]:
 
 
 final_exam = dt.date(2021, 12, 6)
 
 
-# In[17]:
+# In[6]:
 
 
 semester_length = last_day - first_day
 semester_length
 
 
-# In[18]:
+# In[7]:
 
 
 class_days = []
@@ -53,7 +53,7 @@ for i in range((semester_length.days //7 + 1)):
 class_days += [final_exam]
 
 
-# In[19]:
+# In[8]:
 
 
 schedule = pa.DataFrame(class_days, columns = ['Day'])
@@ -64,14 +64,14 @@ for i in range(schedule.shape[0]):
 schedule.Week_Day = schedule.Week_Day.map(weekday_dict)
 
 
-# In[20]:
+# In[9]:
 
 
 for holiday in holidays:
     schedule.loc[schedule.Day==holiday, 'Title'] = 'No Class - University Holiday'
 
 
-# In[21]:
+# In[10]:
 
 
 def add_day(title='', description='', notes=''):
@@ -92,7 +92,7 @@ def add_day(title='', description='', notes=''):
     
 
 
-# In[22]:
+# In[11]:
 
 
 day = 0
@@ -128,59 +128,51 @@ add_day('Lab Day: Find N! and (2N-1)!!')
 
 add_day('Lab Day: Euclidean Algorithm', 'Implementing Euclidean Algorithm')
 
-add_day('Dealing with Errors')
+add_day('Dealing with Errors', 'Defining errors')
 
 add_day('Lab Day:  Approximate a square root')
 
 ## Week 5
 
-add_day('More Using Module', 'Numpy and Sympy')
+add_day('More Using Module', 'Sympy and Scipy')
 
-add_day('Calculus with Python')
+add_day('Calculus with Python', 'Sympy and Scipy')
 
 add_day('Lab Day: How fast does factorial grow?')
 
 ## Week 6
 
-add_day('Iterations', 'For and While')
+add_day('Iterations and Loops', 'For and While')
 
-add_day('Iterations', 'For and While')
+add_day('Iterations and Loops', 'For and While')
 
 add_day('Lab Day: Iterations')
 
 ## Week 7
 
-add_day('Iterations', 'Iterator Objects')
+add_day('Strings')
 
-add_day('Strings', 'Arguably the thing Python does best')
+add_day('Strings')
 
 add_day('Lab Day: Strings')
 
 ## Week 8 
 
-add_day('Strings', 'Arguably the thing Python does best')
+add_day('More Strings', 'File Inputs')
 
-add_day('Strings')
+add_day('More Strings', 'File Inputs')
 
 add_day('Lab Day: Analyzing Hamlet')
 
 ## Week 9 
 
-add_day('Lists and Tuples', 'Mutable versus Immutaable', 'and why we would care')
+add_day('More Lists', 'Mutable versus Immutaable', 'and why we would care')
 
-add_day('Lists and Tuples', 'Slices, map, filter, reduce')
+add_day('More Lists')
 
-add_day('Lab Day: How many primes are there less than N?')
+add_day('Lab Day: Swap')
 
 ## Week 10
-
-add_day('Lists and Tuples')
-
-add_day('Lists and Tuples')
-
-add_day('Lab Day: Find the derrivative of a polynomial')
-
-## Week 11
 
 add_day('Dictionaries and Sets')
 
@@ -188,13 +180,21 @@ add_day('Dictionaries and Sets')
 
 add_day('Lab Day: Algebra of Permutations')
 
+## Week 11
+
+add_day('Tuples')
+
+add_day('Tuples and other Data Structures')
+
+add_day('Lab Day')
+
 ## Week 12
 
-add_day('Putting it All Together')
+add_day('File Manipulation')
 
-add_day('Putting it All Together')
+add_day('File Manipulation')
 
-add_day('Putting it All Together')
+add_day('Lab Day', 'Cryptography Part 2')
 
 ## Week 14
 
@@ -206,9 +206,9 @@ add_day('Lab Day: Complex Numbers, Quaternionic Numbers')
 
 ## Week 15
 
-add_day('File Manipulation')
+add_day('Lab Day: Sudoku')
 
-add_day('Lab Day: Using Files')
+add_day('Lab Day: Sudoku')
 
 ## Week 16
 
@@ -220,6 +220,12 @@ add_day('Things left undone')
 add_day('Final Exam/Project')
 
 schedule
+
+
+# In[12]:
+
+
+schedule.to_csv("CS_120_Schedule.csv")
 
 
 # In[ ]:
