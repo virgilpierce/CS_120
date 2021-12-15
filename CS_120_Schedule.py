@@ -12,39 +12,39 @@ pa.set_option('max_colwidth', 200)
 # In[2]:
 
 
-first_day = dt.date(2021, 8, 23)
+first_day = dt.date(2022, 1, 10)
 
 
-# In[3]:
+# In[28]:
 
 
-holidays = [dt.date(2021, 9, 6) ]
-turkey_break_start = dt.date(2021, 11, 24)
-turkey_break_end = dt.date(2021, 11, 28)
-turkey_break_delta = turkey_break_end - turkey_break_start
-holidays += [ turkey_break_start + dt.timedelta(i) for i in range(turkey_break_delta.days+1)]
+holidays = [dt.date(2022, 1, 17) ]
+spring_break_start = dt.date(2022, 3, 12)
+spring_break_end = dt.date(2022, 3, 20)
+spring_break_delta = spring_break_end - spring_break_start
+holidays += [ spring_break_start + dt.timedelta(i) for i in range(spring_break_delta.days+1)]
 
 
-# In[4]:
+# In[30]:
 
 
-last_day = dt.date(2021, 12, 3)
+last_day = dt.date(2022, 4, 29)
 
 
-# In[5]:
+# In[31]:
 
 
-final_exam = dt.date(2021, 12, 6)
+final_exam = dt.date(2022, 5, 5)
 
 
-# In[6]:
+# In[32]:
 
 
 semester_length = last_day - first_day
 semester_length
 
 
-# In[7]:
+# In[33]:
 
 
 class_days = []
@@ -53,7 +53,7 @@ for i in range((semester_length.days //7 + 1)):
 class_days += [final_exam]
 
 
-# In[8]:
+# In[34]:
 
 
 schedule = pa.DataFrame(class_days, columns = ['Day'])
@@ -64,14 +64,14 @@ for i in range(schedule.shape[0]):
 schedule.Week_Day = schedule.Week_Day.map(weekday_dict)
 
 
-# In[9]:
+# In[35]:
 
 
 for holiday in holidays:
     schedule.loc[schedule.Day==holiday, 'Title'] = 'No Class - University Holiday'
 
 
-# In[10]:
+# In[36]:
 
 
 def add_day(title='', description='', notes=''):
@@ -92,7 +92,7 @@ def add_day(title='', description='', notes=''):
     
 
 
-# In[11]:
+# In[41]:
 
 
 day = 0
@@ -100,15 +100,13 @@ day = 0
 # Introduction - our first program
 
 add_day('Introduction to Python / Jupyter', 
-        'Variables, Numpy', 'Euclidean Algorithm')
+        'Variables, Numpy')
 
 add_day('Variables and Functions', 'Types of variables and writing functions')
 
 add_day('Types and Functions')
 
 ## Week 2
-
-add_day('Writing a Function')
 
 add_day('Meeting our First Modules', 'numpy and matplotlib.pyplot')
 
@@ -117,7 +115,7 @@ add_day('Lab Day: Gradian Function')
 
 ## Week 3 
 
-
+add_day('Conditionals and Recursion')
 
 add_day('Conditionals and Recursion')
 
@@ -138,7 +136,7 @@ add_day('More Using Module', 'Sympy and Scipy')
 
 add_day('Calculus with Python', 'Sympy and Scipy')
 
-add_day('Lab Day: How fast does factorial grow?')
+add_day('Lab Day')
 
 ## Week 6
 
@@ -154,7 +152,7 @@ add_day('Strings')
 
 add_day('Strings')
 
-add_day('Lab Day: Strings')
+add_day('Lab Day: Codes')
 
 ## Week 8 
 
@@ -162,7 +160,7 @@ add_day('More Strings', 'File Inputs')
 
 add_day('More Strings', 'File Inputs')
 
-add_day('Lab Day: Analyzing Hamlet')
+add_day('Lab Day: Complexity of Language')
 
 ## Week 9 
 
@@ -178,7 +176,7 @@ add_day('Dictionaries and Sets')
 
 add_day('Dictionaries and Sets')
 
-add_day('Lab Day: Algebra of Permutations')
+add_day('Lab Day')
 
 ## Week 11
 
@@ -190,25 +188,28 @@ add_day('Lab Day')
 
 ## Week 12
 
-add_day('File Manipulation')
-
-add_day('File Manipulation')
-
-add_day('Lab Day', 'Cryptography Part 2')
-
-## Week 14
-
-add_day('Data Structure Selection', 'Defining our own types')
+add_day('Data Structure Selection', 'Scripts and Imports')
 
 add_day('Data Structure Selection')
 
 add_day('Lab Day: Complex Numbers, Quaternionic Numbers')
 
+## Week 14
+
+add_day('File Manipulation')
+
+add_day('File Manipulation')
+
+add_day('Lab Day')
+
+
 ## Week 15
 
-add_day('Lab Day: Sudoku')
+add_day('Lab Day: Image Manipulation')
 
-add_day('Lab Day: Sudoku')
+add_day('Lab Day: Image Manipulation')
+
+add_day('Lab Day')
 
 ## Week 16
 
@@ -217,12 +218,12 @@ add_day('Things left undone')
 
 add_day('Things left undone')
 
-add_day('Final Exam/Project')
+add_day('Final Project')
 
 schedule
 
 
-# In[12]:
+# In[39]:
 
 
 schedule.to_csv("CS_120_Schedule.csv")
